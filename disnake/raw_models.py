@@ -23,9 +23,9 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
-from .enums import ChannelType, try_enum
-
 from __future__ import annotations
+
+from .enums import ChannelType, try_enum
 
 import datetime
 from typing import TYPE_CHECKING, List, Optional, Set

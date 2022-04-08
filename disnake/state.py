@@ -1082,7 +1082,6 @@ class ConnectionState:
         thread = Thread(guild=guild, state=guild._state, data=data)
         has_thread = guild.get_thread(thread.id)
         guild._add_thread(thread)
-        self.dispatch('raw_thread_create', thread)
         if not has_thread:
             if data.get("newly_created"):
                 if isinstance(thread.parent, ForumChannel):
