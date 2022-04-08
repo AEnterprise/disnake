@@ -1117,10 +1117,17 @@ class ConnectionState:
             return
 
         thread_id = int(data["id"])
-        thread = guild.get_thread(thread_id)
+        raw = RawThreadDeleteEvent(data)
+
+        thread = guild.get_thread(raw.thread_id)
+
         if thread is not None:
+            raw.thread = thread
             guild._remove_thread(thread)
             self.dispatch("thread_delete", thread)
+
+        self.dispatch('raw_thread_delete', raw)
+
 
     def parse_thread_list_sync(self, data) -> None:
         guild_id = int(data["guild_id"])
